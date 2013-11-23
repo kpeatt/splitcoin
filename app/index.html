@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" ng-app="splitcoin">
+<head>
+  <meta charset="utf-8">
+  <title>Splitcoin</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <form>
+    <div class="form__total">
+      <label for="billTotal">
+        Bill Total:
+      </label>
+      <input name="billTotal" id="billTotal" type="text" placeholder="Total including tax">
+      <span class="postfix">CAD</span>
+      <a href="#" title="Add another total">Add another</a>
+    </div>
+    <div class="form__tip">
+      <label for="billTip">Tip Amount:</label>
+      <input type="text" id="billTip" name="billTip" placeholder="Tip amount">
+    </div>
+    <div class="form__tip-type">
+      <label for="tipPercent">
+        <input type="radio" name="tipType" id="tipPercent" value="percent">
+        Percent
+      </label>
+      <label for="tipDollar">
+        <input type="radio" name="tipType" id="tipDollar" value="dollar">
+        Dollars
+      </label>
+    </div>
+  </form>
+
+  <div class="result">
+    <label for="bitCost">
+      Bitcoin Amount:
+    </label>
+    <input type="text" placeholder="Calculated BTC amount" name="bitCost" id="bitCost">
+    <span class="postfix">BTC</span>
+  </div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>
