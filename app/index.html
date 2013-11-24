@@ -11,10 +11,13 @@
       <label for="billTotal">
         Bill Total:
       </label>
-      <input name="billTotal" id="billTotal" type="text" placeholder="Total including tax">
-      <select name="billCurrency">
-        <option ng-repeat="(currency, data) in ticker" value="{{currency}}">{{currency}}</option>
+      <input name="billTotal" id="billTotal" type="text" placeholder="Total including tax" ng-model="total">
+      <select
+        name="billCurrency"
+        ng-model="selectedCurrency"
+        ng-options="currency as currency for (currency, data) in ticker">
       </select>
+      {{ticker[selectedCurrency].15m}}
       <a href="#" title="Add another total">Add another</a>
     </div>
     <div class="form__tip">
