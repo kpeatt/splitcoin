@@ -8,7 +8,7 @@ var splitcoinServices = angular.module('splitcoin.services', ['ngResource']);
 // In this case it is a simple value service.
 splitcoinServices.factory('Ticker', ['$resource',
     function($resource){
-        return $resource('/sampledata/ticker.json', {}, {
+        return $resource('http://blockchain.info/ticker', {}, {
             query: {method:'GET'}
         });
     }
