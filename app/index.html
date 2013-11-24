@@ -12,7 +12,9 @@
         Bill Total:
       </label>
       <input name="billTotal" id="billTotal" type="text" placeholder="Total including tax">
-      <span class="postfix">CAD</span>
+      <select name="billCurrency">
+        <option ng-repeat="(currency, data) in ticker" value="{{currency}}">{{currency}}</option>
+      </select>
       <a href="#" title="Add another total">Add another</a>
     </div>
     <div class="form__tip">
@@ -29,9 +31,6 @@
         Dollars
       </label>
     </div>
-    <p ng-repeat="(currency, data) in ticker" class="currency__name">
-      {{currency}}
-    </p>
   </form>
 
   <div class="result">
