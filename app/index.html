@@ -17,30 +17,32 @@
         ng-model="selectedCurrency"
         ng-options="currency as currency for (currency, data) in ticker">
       </select>
-      {{ticker[selectedCurrency].15m}}
-      <a href="#" title="Add another total">Add another</a>
     </div>
     <div class="form__tip">
       <label for="billTip">Tip Amount:</label>
-      <input type="text" id="billTip" name="billTip" placeholder="Tip amount">
+      <input ng-model="tip" type="text" id="billTip" name="billTip" placeholder="Tip amount">
     </div>
     <div class="form__tip-type">
       <label for="tipPercent">
-        <input type="radio" name="tipType" id="tipPercent" value="percent">
+        <input ng-model="tipType" type="radio" name="tipType" id="tipPercent" value="percent">
         Percent
       </label>
       <label for="tipDollar">
-        <input type="radio" name="tipType" id="tipDollar" value="dollar">
+        <input ng-model="tipType" type="radio" name="tipType" id="tipDollar" value="dollar">
         Dollars
       </label>
     </div>
+    <button ng-click="bitCalc(total, tip, tipType, selectedCurrency)">Evaluate</button>
   </form>
 
   <div class="result">
+    <div class="result__total">
+      Bill Total: {{billTotal | currency}}
+    </div>
     <label for="bitCost">
       Bitcoin Amount:
     </label>
-    <input type="text" placeholder="Calculated BTC amount" name="bitCost" id="bitCost">
+    <input type="text" placeholder="Calculated BTC amount" name="bitCost" id="bitCost" value="{{result}}">
     <span class="postfix">BTC</span>
   </div>
 
