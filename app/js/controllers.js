@@ -1,11 +1,17 @@
 'use strict';
 
+var splitcoin = angular.module('splitcoin.controllers', []);
+
 /* Controllers */
 
-angular.module('splitcoin.controllers', []).
-  controller('MyCtrl1', [function() {
+splitcoin.controller('SplitCalc', function($scope, Ticker) {
 
-  }])
-  .controller('MyCtrl2', [function() {
+    $scope.ticker = Ticker.query();
 
-  }]);
+    // $scope.currencies = function() {
+    //     angular.forEach($scope.ticker, function(value, key) {
+    //         /* do something for all key: value pairs */
+    //     });
+    // }
+
+});

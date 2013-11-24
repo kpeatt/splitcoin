@@ -5,7 +5,7 @@
   <title>Splitcoin</title>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body>
+<body ng-controller="SplitCalc">
   <form>
     <div class="form__total">
       <label for="billTotal">
@@ -29,6 +29,7 @@
         Dollars
       </label>
     </div>
+    <p>{{currencies}}</p>
   </form>
 
   <div class="result">
