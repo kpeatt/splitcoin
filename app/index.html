@@ -29,7 +29,9 @@
         Dollars
       </label>
     </div>
-    <p>{{currencies}}</p>
+    <p ng-repeat="(currency, data) in ticker" class="currency__name">
+      {{currency}}
+    </p>
   </form>
 
   <div class="result">
