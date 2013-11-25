@@ -1,0 +1,41 @@
+@import "settings";
+@import "foundation";
+
+.content {
+  @include grid-row();
+
+  h1 {
+    margin: 10px 0 15px;
+    font-size: $h4-font-size;
+  }
+}
+
+form,
+.result {
+  @include grid-column(12);
+}
+
+.form__row {
+  @include grid-row(collapse);
+}
+
+.form__total {
+  @include grid-column(12, $collapse: true);
+  @include grid-row();
+
+  input {
+    @include grid-column(8);
+  }
+
+  select {
+    @include grid-column(4);
+
+    border-left-width: 0;
+    height: 37px; // Match input
+    background-position-x: 90%;
+  }
+}
+
+.form__tip {
+  @include grid-column(12, $collapse: true);
+}

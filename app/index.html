@@ -3,47 +3,60 @@
 <head>
   <meta charset="utf-8">
   <title>Splitcoin</title>
-  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body ng-controller="SplitCalc">
-  <form>
-    <div class="form__total">
-      <label for="billTotal">
-        Bill Total:
-      </label>
-      <input name="billTotal" id="billTotal" type="text" placeholder="Total including tax" ng-model="total">
-      <select
-        name="billCurrency"
-        ng-model="selectedCurrency"
-        ng-options="currency as currency for (currency, data) in ticker">
-      </select>
-    </div>
-    <div class="form__tip">
-      <label for="billTip">Tip Amount:</label>
-      <input ng-model="tip" type="text" id="billTip" name="billTip" placeholder="Tip amount">
-    </div>
-    <div class="form__tip-type">
-      <label for="tipPercent">
-        <input ng-model="tipType" type="radio" name="tipType" id="tipPercent" value="percent">
-        Percent
-      </label>
-      <label for="tipDollar">
-        <input ng-model="tipType" type="radio" name="tipType" id="tipDollar" value="dollar">
-        Dollars
-      </label>
-    </div>
-    <button ng-click="bitCalc(total, tip, tipType, selectedCurrency)">Evaluate</button>
-  </form>
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">SplitCoin</a></h1>
+      </li>
+    </ul>
+  </nav>
+  <div class="content">
+    <form>
+      <h1>Calculate your BTC Cost</h1>
+      <div class="form__row">
+        <div class="form__total">
+          <label for="billTotal">
+            Bill Total:
+          </label>
+          <input name="billTotal" id="billTotal" type="number" placeholder="Total including tax" ng-model="total" ng-blur="bitCalc(total, tip, tipType, selectedCurrency)">
+          <select
+            name="billCurrency"
+            ng-model="selectedCurrency"
+            ng-options="currency as currency for (currency, data) in ticker" ng-blur="bitCalc(total, tip, tipType, selectedCurrency)">
+          </select>
+        </div>
+      </div>
+      <div class="form__tip">
+        <label for="billTip">Tip Amount:</label>
+        <input ng-model="tip" type="number" id="billTip" name="billTip" placeholder="Tip amount" ng-blur="bitCalc(total, tip, tipType, selectedCurrency)">
+      </div>
 
-  <div class="result">
-    <div class="result__total">
-      Bill Total: {{billTotal | currency}}
+      <div class="form__tip-type">
+        <label for="tipPercent">
+          <input ng-model="tipType" type="radio" name="tipType" id="tipPercent" value="percent" ng-change="bitCalc(total, tip, tipType, selectedCurrency)">
+          Percent
+        </label>
+        <label for="tipDollar">
+          <input ng-model="tipType" type="radio" name="tipType" id="tipDollar" value="dollar" ng-change="bitCalc(total, tip, tipType, selectedCurrency)">
+          Dollars
+        </label>
+      </div>
+    </form>
+
+    <div class="result">
+      <div class="result__total">
+        Bill Total: {{billTotal | currency}}
+      </div>
+      <label for="bitCost">
+        Bitcoin Amount:
+      </label>
+      <input type="number" placeholder="Calculated BTC amount" name="bitCost" id="bitCost" value="{{result}}">
+      <span class="postfix">BTC</span>
     </div>
-    <label for="bitCost">
-      Bitcoin Amount:
-    </label>
-    <input type="text" placeholder="Calculated BTC amount" name="bitCost" id="bitCost" value="{{result}}">
-    <span class="postfix">BTC</span>
   </div>
 
   <!-- In production use:
